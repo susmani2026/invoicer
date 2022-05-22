@@ -49,8 +49,12 @@ jobs:
 
       - run:
           name: Test dependencies are up to date
-          command: 'GOPATH="${GOPATH_HEAD}"; ( cd ${GOPATH_BASE}/${CIRCLE_PROJECT_REPONAME} && govend -u --prune && git diff --quiet )'
-
+          command: 'GOPATH="${GOPATH_HEAD}"; 
+          echo $GOPATH;
+          echo $GOPATH_HEAD;
+          echo $GOPATH_BASE;
+          echo $CIRCLE_PROJECT_REPONAME;
+          ( cd ${GOPATH_BASE}/${CIRCLE_PROJECT_REPONAME} && govend -u --prune && git diff --quiet )'
       - deploy:
           # Push application container to dockerhub
           command: |
